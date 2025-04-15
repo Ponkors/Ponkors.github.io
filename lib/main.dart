@@ -7,8 +7,6 @@ import 'config/map_config.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  // Инициализация API-ключа Яндекс.Карт
-  // await init.initMapkit(apiKey: MapConfig.yandexMapApiKey);
   runApp(const WeddingApp());
 }
 
@@ -18,7 +16,7 @@ class WeddingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Наша Свадьба',
+      title: 'Vladislav & Valeria',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

@@ -16,7 +16,7 @@ class DressCodeSection extends StatelessWidget {
         children: [
           const SectionTitle(
             title: 'Дресс-код',
-            subtitle: 'Как одеться на нашу свадьбу',
+            subtitle: '',
           ),
           const SizedBox(height: 60),
           Padding(
@@ -109,18 +109,6 @@ class DressCodeSection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildDressCodeItem(
-            icon: Icons.check_circle_outline,
-            title: 'Для дам',
-            description: 'Длинные или миди платья пастельных тонов, элегантные костюмы',
-          ),
-          const SizedBox(height: 20),
-          _buildDressCodeItem(
-            icon: Icons.check_circle_outline,
-            title: 'Для мужчин',
-            description: 'Классические костюмы светлых тонов, рубашки пастельных цветов',
-          ),
-          const SizedBox(height: 20),
           _buildDressCodeItem(
             icon: Icons.info_outline,
             title: 'Важно',

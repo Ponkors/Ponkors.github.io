@@ -46,6 +46,7 @@ dependencies:
   url_launcher: ^6.2.5
   geolocator: ^11.0.0
   yandex_mapkit: ^4.1.0
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

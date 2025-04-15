@@ -4,7 +4,6 @@ import '../constants/app_constants.dart';
 import '../widgets/about_section.dart';
 import '../widgets/dress_code_section.dart';
 import '../widgets/flipp_clock.dart';
-import '../widgets/gallery_section.dart';
 import '../widgets/location_section.dart';
 import '../widgets/rsvp_section.dart';
 import '../widgets/schedule_section.dart';
@@ -18,6 +17,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locationKey = GlobalKey();
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -58,12 +59,12 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ).animate().fadeIn(duration: const Duration(milliseconds: 1000)).slideY(begin: 0.3, end: 0),
-                    const SizedBox(height: 200),
+                    const SizedBox(height: 30),
                     Text(
                       AppConstants.groomName,
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 48,
-                        color: Colors.white,
+                        color: const Color.fromRGBO(93,92,88,1),
                         letterSpacing: 2,
                         fontWeight: FontWeight.w400,
                         shadows: [
@@ -95,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                       AppConstants.brideName,
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 48,
-                        color: Colors.white,
+                        color: const Color.fromRGBO(93,92,88,1),
                         letterSpacing: 2,
                         fontWeight: FontWeight.w400,
                         shadows: [
@@ -107,12 +108,12 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ).animate().fadeIn(duration: const Duration(milliseconds: 1000)).slideY(begin: 0.3, end: 0),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 220),
                     Text(
                       AppConstants.weddingDateString,
                       style: GoogleFonts.playfairDisplay(
                         fontSize: 24,
-                        color: Colors.white,
+                        color: const Color.fromRGBO(93,92,88,1),
                         letterSpacing: 1,
                         fontWeight: FontWeight.w300,
                         shadows: [
@@ -134,10 +135,9 @@ class HomeScreen extends StatelessWidget {
             ),
             // const AboutSection(),
             // const StorySection(),
-            const ScheduleSection(),
+            ScheduleSection(locationKey: locationKey),
             const DressCodeSection(),
-            const GallerySection(),
-            const LocationSection(),
+            LocationSection(key: locationKey),
             const RSVPSection(),
           ],
         ),

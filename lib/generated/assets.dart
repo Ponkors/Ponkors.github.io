@@ -8,18 +8,20 @@ class Assets {
   static const String fontsPlayfairDisplayRegular = 'assets/fonts/PlayfairDisplay-Regular.ttf';
   static const String imagesBride = 'assets/images/bride.jpg';
   static const String imagesChampagne = 'assets/images/champagne.png';
+  static const String imagesChurch = 'assets/images/church.jpg';
   static const String imagesFlowers = 'assets/images/flowers.png';
-  static const String imagesGallery1 = 'assets/images/gallery1.jpg';
-  static const String imagesGallery2 = 'assets/images/gallery2.jpg';
+  static const String imagesFranopol = 'assets/images/franopol.jpg';
   static const String imagesGroom = 'assets/images/groom.jpg';
   static const String imagesHearth = 'assets/images/hearth.png';
   static const String imagesHeroBg = 'assets/images/hero_bg.jpg';
   static const String imagesLove = 'assets/images/love.png';
+  static const String imagesPattern = 'assets/images/pattern.png';
   static const String imagesRings = 'assets/images/rings.png';
   static const String imagesStory1 = 'assets/images/story1.jpg';
   static const String imagesStory2 = 'assets/images/story2.jpg';
   static const String imagesStory3 = 'assets/images/story3.jpg';
   static const String imagesVenue = 'assets/images/venue.jpg';
   static const String imagesWeddingCake = 'assets/images/wedding_cake.png';
+  static const String imagesWeddingMarker = 'assets/images/wedding_marker.png';
 
 }

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../constants/app_constants.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
-  final String? subtitle;
-  final bool isLight;
+  final String subtitle;
 
   const SectionTitle({
     super.key,
     required this.title,
-    this.subtitle,
-    this.isLight = false,
+    required this.subtitle,
   });
 
   @override
@@ -21,24 +20,23 @@ class SectionTitle extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.playfairDisplay(
-            fontSize: 36,
+            fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: isLight ? Colors.white : const Color(AppConstants.textColorValue),
+            color: const Color(AppConstants.textColorValue),
+            letterSpacing: 2,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          subtitle,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 18,
+            color: const Color(AppConstants.textColorValue).withOpacity(0.7),
             letterSpacing: 1,
           ),
         ),
-        if (subtitle != null) ...[
-          const SizedBox(height: 10),
-          Text(
-            subtitle!,
-            style: GoogleFonts.playfairDisplay(
-              fontSize: 18,
-              color: isLight ? Colors.white.withOpacity(0.8) : const Color(AppConstants.textColorValue).withOpacity(0.8),
-              fontWeight: FontWeight.w300,
-            ),
-          ),
-        ],
       ],
-    );
+    ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+      .slideY(begin: 0.3, end: 0);
   }
 } 
