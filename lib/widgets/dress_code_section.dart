@@ -24,7 +24,7 @@ class DressCodeSection extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Мы будем рады видеть вас в нарядах пастельных тонов',
+                  'Нам будет особенно приятно, если ты поддержишь пастельный дресс-код нашей свадьбы:',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.playfairDisplay(
                     fontSize: 20,
@@ -34,6 +34,8 @@ class DressCodeSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 _buildColorPalette(),
+                const SizedBox(height: 40),
+                _buildColorPalette1(),
                 const SizedBox(height: 40),
                 _buildDressCodeInfo(),
               ],
@@ -93,6 +95,54 @@ class DressCodeSection extends StatelessWidget {
     );
   }
 
+  Widget _buildColorPalette1() {
+    final colors = [
+      const Color(0xFFFFFFFF), // Белый
+      const Color(0xFF828282), // Светло-серый
+      const Color(0xFF000000), // Светло-черный
+  
+    ];
+
+    return Column(
+      children: [
+        Text(
+          'Для мужчин также:',
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 18,
+            color: const Color(AppConstants.textColorValue),
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(height: 25),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: colors.map((color) {
+            return Container(
+              width: 50,
+              height: 50,
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                color: color,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.3),
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 5,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+            ).animate().fadeIn(duration: const Duration(milliseconds: 500)).scale(begin: const Offset(0.8, 0.8));
+          }).toList(),
+        ),
+      ],
+    );
+  }
+
   Widget _buildDressCodeInfo() {
     return Container(
       padding: const EdgeInsets.all(30),
@@ -113,6 +163,12 @@ class DressCodeSection extends StatelessWidget {
             icon: Icons.info_outline,
             title: 'Важно',
             description: 'Пожалуйста, избегайте ярких и контрастных цветов',
+          ),
+          const SizedBox(height: 20),
+          _buildDressCodeItem(
+            icon: Icons.info_outline,
+            title: '',
+            description: 'Не забудьте прихватить удобную обувь для загородной усадьбы и большого количества танцев',
           ),
         ],
       ),

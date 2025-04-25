@@ -21,20 +21,40 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
   int _currentIndex = 0;
   final List<Map<String, dynamic>> _schedules = [
     {
-      'time': '12:00',
-      'title': 'Время венчания',
+      'time': '12:50',
+      'title': 'Венчание',
       'location': AppConstants.churchName,
       'address': AppConstants.churchAddress,
       'image': AppConstants.churchImage,
       'showLocationButton': false,
+      'showAttentionButton': true,
     },
     {
       'time': '14:30',
-      'title': 'Время встречи',
+      'title': 'Фуршет',
       'location': 'Франопольское городище',
       'address': AppConstants.weddingAddress,
       'image': 'assets/images/franopol.jpg',
       'showLocationButton': true,
+      'showAttentionButton': false,
+    },
+    {
+      'time': '15:00',
+      'title': 'Регистрация',
+      'location': 'Франопольское городище',
+      'address': AppConstants.weddingAddress,
+      'image': 'assets/images/wedding_registration.jpg.webp',
+      'showLocationButton': false,
+      'showAttentionButton': false,
+    },
+    {
+      'time': '17:00',
+      'title': 'Фотосессия',
+      'location': 'Франопольское городище',
+      'address': AppConstants.weddingAddress,
+      'image': 'assets/images/wedding_photosession.jpg',
+      'showLocationButton': false,
+      'showAttentionButton': false,
     },
   ];
 
@@ -76,7 +96,7 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
               itemCount: _schedules.length,
               options: CarouselOptions(
                 height: isSmallScreen ? 550 : 500,
-                viewportFraction: 0.85,
+                viewportFraction: 0.8,
                 enlargeCenterPage: true,
                 autoPlay: false,
                 onPageChanged: (index, reason) {
@@ -134,7 +154,8 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
           ),
         ],
       ),
-      child: Column(
+      child: SingleChildScrollView(
+        child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ClipRRect(
@@ -239,6 +260,7 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
                   ).animate().fadeIn(duration: const Duration(milliseconds: 500))
                     .slideY(begin: 0.3, end: 0)
                 else
+                  if (schedule['showAttentionButton'] == true)
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                     decoration: BoxDecoration(
@@ -278,6 +300,7 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
         ],
       ),
     ).animate().fadeIn(duration: const Duration(milliseconds: 800))
-      .slideY(begin: 0.2, end: 0);
+      .slideY(begin: 0.2, end: 0),
+    );
   }
 } 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:wedding/widgets/details_section.dart';
 import '../constants/app_constants.dart';
 import '../widgets/about_section.dart';
 import '../widgets/dress_code_section.dart';
@@ -136,6 +137,7 @@ class HomeScreen extends StatelessWidget {
             // const AboutSection(),
             // const StorySection(),
             ScheduleSection(locationKey: locationKey),
+            const DetailsSection(),
             const DressCodeSection(),
             LocationSection(key: locationKey),
             const RSVPSection(),
