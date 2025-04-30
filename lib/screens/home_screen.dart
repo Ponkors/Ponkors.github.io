@@ -11,6 +11,7 @@ import '../widgets/schedule_section.dart';
 import '../widgets/story_section.dart';
 import '../widgets/scroll_indicator.dart';
 import '../widgets/wedding_decorations.dart';
+import '../widgets/welcome_section.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -136,6 +137,7 @@ class HomeScreen extends StatelessWidget {
             ),
             // const AboutSection(),
             // const StorySection(),
+            const WelcomeSection(),
             ScheduleSection(locationKey: locationKey),
             const DetailsSection(),
             const DressCodeSection(),

@@ -4,7 +4,7 @@ class AppConstants {
   static final DateTime weddingDate = DateTime(2025, 6, 1, 14, 0);
   static const String weddingDateString = '1 июня 2025, 14:30';
   static const String weddingLocation = 'Агроусадьба "Фронопольское городище"';
-  static const String weddingAddress = 'ул. Советских Партизан, 58, \nг. Фронополь, Брестская область';
+  static const String weddingAddress = 'ул. Советских Партизан, 58, \nд. Фронополь, Брестская область';
   
   // Цветовая схема
   static const int primaryColorValue = 0xFF2E7D32; // Зеленый
@@ -112,5 +112,5 @@ class AppConstants {
   static const String churchImage = 'assets/images/church.jpg';
   static const String churchName = 'Гарнизонный храм \nБрестской крепости';
   static const String churchTime = '12:50';
-  static const String churchAddress = 'Брестская крепость, Брест, Беларусь';
+  static const String churchAddress = 'Брестская крепость, г. Брест';
 } 
