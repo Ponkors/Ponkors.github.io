@@ -95,7 +95,7 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
             CarouselSlider.builder(
               itemCount: _schedules.length,
               options: CarouselOptions(
-                height: isSmallScreen ? 550 : 500,
+                height: MediaQuery.of(context).size.height * 0.7,
                 viewportFraction: 0.8,
                 enlargeCenterPage: true,
                 autoPlay: false,
@@ -154,8 +154,7 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
           ),
         ],
       ),
-      child: SingleChildScrollView(
-        child: Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ClipRRect(
@@ -167,65 +166,99 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
               fit: BoxFit.cover,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(padding),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  schedule['time'] as String,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: timeFontSize,
-                    fontWeight: FontWeight.w400,
-                    color: const Color.fromRGBO(93,92,88,1),
-                    letterSpacing: 1,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black.withOpacity(0.3),
-                        offset: const Offset(0, 2),
-                        blurRadius: 4,
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(padding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    schedule['time'] as String,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: timeFontSize,
+                      fontWeight: FontWeight.w400,
+                      color: const Color.fromRGBO(93,92,88,1),
+                      letterSpacing: 1,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withOpacity(0.3),
+                          offset: const Offset(0, 2),
+                          blurRadius: 4,
+                        ),
+                      ],
+                    ),
+                  ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+                    .scale(begin: const Offset(0.8, 0.8)),
+                  Text(
+                    schedule['title'] as String,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: titleFontSize,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(AppConstants.textColorValue),
+                    ),
+                  ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+                    .slideY(begin: 0.3, end: 0),
+                  Text(
+                    schedule['location'] as String,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: locationFontSize,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(AppConstants.textColorValue),
+                    ),
+                  ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+                    .slideY(begin: 0.3, end: 0),
+                  Text(
+                    schedule['address'] as String,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: addressFontSize,
+                      color: const Color(AppConstants.textColorValue).withOpacity(0.8),
+                    ),
+                  ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+                    .slideY(begin: 0.3, end: 0),
+                  const SizedBox(height: 25),
+                  if (schedule['showLocationButton'] == true)
+                    GestureDetector(
+                      onTap: _scrollToLocation,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                        decoration: BoxDecoration(
+                          color: const Color(AppConstants.backgroundColorValue),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: const Color(AppConstants.primaryColorValue).withOpacity(0.2),
+                            width: 1,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: const Color(AppConstants.primaryColorValue),
+                              size: isSmallScreen ? 16 : 18,
+                            ),
+                            const SizedBox(width: 12),
+                            Text(
+                              'Где находится?',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.playfairDisplay(
+                                fontSize: noteFontSize,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(AppConstants.textColorValue),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ).animate().fadeIn(duration: const Duration(milliseconds: 500))
-                  .scale(begin: const Offset(0.8, 0.8)),
-                const SizedBox(height: 15),
-                Text(
-                  schedule['title'] as String,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: titleFontSize,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(AppConstants.textColorValue),
-                  ),
-                ).animate().fadeIn(duration: const Duration(milliseconds: 500))
-                  .slideY(begin: 0.3, end: 0),
-                const SizedBox(height: 8),
-                Text(
-                  schedule['location'] as String,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: locationFontSize,
-                    fontWeight: FontWeight.w500,
-                    color: const Color(AppConstants.textColorValue),
-                  ),
-                ).animate().fadeIn(duration: const Duration(milliseconds: 500))
-                  .slideY(begin: 0.3, end: 0),
-                const SizedBox(height: 8),
-                Text(
-                  schedule['address'] as String,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: addressFontSize,
-                    color: const Color(AppConstants.textColorValue).withOpacity(0.8),
-                  ),
-                ).animate().fadeIn(duration: const Duration(milliseconds: 500))
-                  .slideY(begin: 0.3, end: 0),
-                const SizedBox(height: 25),
-                if (schedule['showLocationButton'] == true)
-                  GestureDetector(
-                    onTap: _scrollToLocation,
-                    child: Container(
+                    ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+                      .slideY(begin: 0.3, end: 0)
+                  else
+                    if (schedule['showAttentionButton'] == true)
+                    Container(
                       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                       decoration: BoxDecoration(
                         color: const Color(AppConstants.backgroundColorValue),
@@ -240,13 +273,13 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.location_on,
+                            Icons.access_time,
                             color: const Color(AppConstants.primaryColorValue),
                             size: isSmallScreen ? 16 : 18,
                           ),
                           const SizedBox(width: 12),
                           Text(
-                            'Где находится?',
+                            'Пожалуйста, приходите\nза 15-20 минут до начала',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.playfairDisplay(
                               fontSize: noteFontSize,
@@ -256,51 +289,15 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
                           ),
                         ],
                       ),
-                    ),
-                  ).animate().fadeIn(duration: const Duration(milliseconds: 500))
-                    .slideY(begin: 0.3, end: 0)
-                else
-                  if (schedule['showAttentionButton'] == true)
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-                    decoration: BoxDecoration(
-                      color: const Color(AppConstants.backgroundColorValue),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: const Color(AppConstants.primaryColorValue).withOpacity(0.2),
-                        width: 1,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.access_time,
-                          color: const Color(AppConstants.primaryColorValue),
-                          size: isSmallScreen ? 16 : 18,
-                        ),
-                        const SizedBox(width: 12),
-                        Text(
-                          'Пожалуйста, приходите\nза 15-20 минут до начала',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.playfairDisplay(
-                            fontSize: noteFontSize,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(AppConstants.textColorValue),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ).animate().fadeIn(duration: const Duration(milliseconds: 500))
-                    .slideY(begin: 0.3, end: 0),
-              ],
+                    ).animate().fadeIn(duration: const Duration(milliseconds: 500))
+                      .slideY(begin: 0.3, end: 0),
+                ],
+              ),
             ),
           ),
         ],
       ),
     ).animate().fadeIn(duration: const Duration(milliseconds: 800))
-      .slideY(begin: 0.2, end: 0),
-    );
+      .slideY(begin: 0.2, end: 0);
   }
 } 

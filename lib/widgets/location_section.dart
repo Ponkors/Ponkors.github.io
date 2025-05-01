@@ -50,7 +50,11 @@ class _LocationSectionState extends State<LocationSection> {
           const SizedBox(height: 40),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
-            height: 200,
+            height: MediaQuery.of(context).size.height * 0.4,
+            constraints: const BoxConstraints(
+              minHeight: 200,
+              maxHeight: 500,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               boxShadow: [

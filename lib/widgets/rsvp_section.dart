@@ -147,13 +147,20 @@ class _RSVPSectionState extends State<RSVPSection> {
                       ),
                       filled: true,
                       fillColor: Colors.white,
-                      hintText: '+375 XX XXX XX XX',
+                      prefixText: '+375 ',
+                      // prefixStyle: const TextStyle(
+                      //   color: Colors.black,
+                      //   fontWeight: FontWeight.bold,
+                      // ),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Пожалуйста, введите ваш номер телефона';
                       }
-                      if (!value.contains('+375')) {
+                      if (value.length != 9) {
+                        return 'Пожалуйста, введите корректный номер';
+                      }
+                      if (!RegExp(r'^\d+$').hasMatch(value)) {
                         return 'Пожалуйста, введите корректный номер';
                       }
                       return null;
