@@ -123,7 +123,7 @@ class _RSVPSectionState extends State<RSVPSection> {
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(
-                      labelText: 'Ваше имя',
+                      labelText: 'Ваше ФИО',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),
