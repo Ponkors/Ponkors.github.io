@@ -47,15 +47,15 @@ class _ScheduleSliderState extends State<ScheduleSlider> {
       'showLocationButton': false,
       'showAttentionButton': false,
     },
-    {
-      'time': '17:00',
-      'title': 'Фотосессия',
-      'location': 'Франопольское городище',
-      'address': AppConstants.weddingAddress,
-      'image': 'assets/images/wedding_photosession.jpg',
-      'showLocationButton': false,
-      'showAttentionButton': false,
-    },
+    // {
+    //   'time': '17:00',
+    //   'title': 'Фотосессия',
+    //   'location': 'Франопольское городище',
+    //   'address': AppConstants.weddingAddress,
+    //   'image': 'assets/images/wedding_photosession.jpg',
+    //   'showLocationButton': false,
+    //   'showAttentionButton': false,
+    // },
   ];
 
   void _scrollToLocation() {
