@@ -102,6 +102,7 @@ class _RSVPSectionState extends State<RSVPSection> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -123,6 +124,10 @@ class _RSVPSectionState extends State<RSVPSection> {
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(
+                      hintText: 'Пожалуйста, указывайте полные инициалы',
+                      hintStyle: const TextStyle(
+                        fontSize: 13,
+                      ),
                       labelText: 'ФИО',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),

@@ -167,7 +167,6 @@ class DressCodeSection extends StatelessWidget {
           const SizedBox(height: 20),
           _buildDressCodeItem(
             icon: Icons.info_outline,
-            title: '',
             description: 'Не забудьте прихватить удобную обувь для загородной усадьбы и большого количества танцев',
           ),
         ],
@@ -177,10 +176,11 @@ class DressCodeSection extends StatelessWidget {
 
   Widget _buildDressCodeItem({
     required IconData icon,
-    required String title,
+    String? title, // теперь необязательный
     required String description,
   }) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Icon(
           icon,
@@ -192,15 +192,17 @@ class DressCodeSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: GoogleFonts.playfairDisplay(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: const Color(AppConstants.textColorValue),
+              if (title != null && title.trim().isNotEmpty) ...[
+                Text(
+                  title,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(AppConstants.textColorValue),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4),
+                const SizedBox(height: 4),
+              ],
               Text(
                 description,
                 style: GoogleFonts.playfairDisplay(
