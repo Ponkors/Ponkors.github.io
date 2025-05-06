@@ -54,13 +54,6 @@ class DetailsSection extends StatelessWidget {
                   Icons.card_giftcard,
                   textFontSize,
                 ),
-                const SizedBox(height: 30),
-                _buildDetailItem(
-                  context,
-                  'До места проведения мероприятия будет организован трансфер.',
-                  Icons.directions_bus,
-                  textFontSize,
-                ),
               ],
             ),
           ),
